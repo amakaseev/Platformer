@@ -3,9 +3,10 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static PlayerInputActions;
 
-namespace Platformer
-{
-  public class InputReader : ScriptableObject, IPlayerActions {
+namespace Platformer {
+
+  [CreateAssetMenu(fileName = "InputReader", menuName = "Platformer/InputReader")]
+  public partial class InputReader : ScriptableObject, IPlayerActions {
 
     public event UnityAction<Vector2> Move = delegate { };
     public event UnityAction<Vector2, bool> Look = delegate { };
@@ -21,6 +22,9 @@ namespace Platformer
         inputActions = new PlayerInputActions();
         inputActions.Player.SetCallbacks(this);
       }
+    }
+
+    public void EnablePlayerActions() {
       inputActions.Enable();
     }
 

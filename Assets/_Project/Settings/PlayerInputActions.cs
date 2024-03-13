@@ -25,12 +25,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     ""maps"": [
         {
             ""name"": ""Player"",
-            ""id"": ""4edc4d2d-6150-445f-b9e2-266e730a35cf"",
+            ""id"": ""9f6a7735-fed5-4b68-a4ec-205b9eebbae6"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
-                    ""id"": ""2df9ed63-56d2-49e5-9037-2d75c9efa504"",
+                    ""id"": ""58e6cfc0-335a-4fb6-acc7-5688b244aaa4"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -39,7 +39,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
-                    ""id"": ""261500af-ad30-4995-a44d-fc6b762ad9d7"",
+                    ""id"": ""68ab3416-4ca5-489e-81a3-7e968ca60cbe"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,7 +48,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
-                    ""id"": ""4f90cc1a-f4d5-4c1c-b141-3193bced2a03"",
+                    ""id"": ""9177be6e-b418-4c24-ab54-4b6c07579937"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -57,7 +57,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""MouseControlCamera"",
                     ""type"": ""Button"",
-                    ""id"": ""62cc03c6-b9ac-48a6-b5bb-d38b72dd6cc4"",
+                    ""id"": ""f7771a84-db1d-4415-9f27-2e3aec04a6cf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -66,7 +66,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Run"",
                     ""type"": ""Button"",
-                    ""id"": ""d9123889-b850-43fc-a1c9-347f5ea4b681"",
+                    ""id"": ""33d00ec1-bad8-4d9b-87b7-83e652d0dd44"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -75,7 +75,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""025d4b47-04fe-4d5b-89f5-eb0203a94ba6"",
+                    ""id"": ""7e516df6-12e2-4872-8c35-f1b522cb7631"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -305,34 +305,67 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b363c5a2-5e59-43c4-b2f3-2d254b688eda"",
+                    ""id"": ""b1466427-4643-439e-9509-802a52ea6d20"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""MouseControlCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8f39421f-0b02-411f-9619-adf242903caf"",
+                    ""id"": ""e450180a-6fb2-4d82-8929-fb205b518df0"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a8fd6a4c-910b-469a-8fcd-920500e744cf"",
+                    ""id"": ""d133c5b8-26f9-46a8-8b1f-e2254779aaf5"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2612734a-2810-4e15-b3b8-3322cdeb4cb6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0871796d-8c45-4834-b5d4-6ee0ffc2445a"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56820e27-694f-4851-8742-dc3cd1118796"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -340,12 +373,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         },
         {
             ""name"": ""UI"",
-            ""id"": ""588f4e59-9a0a-4832-ace0-77f18550e955"",
+            ""id"": ""350033cd-9ffe-4831-82ff-0057f2b8ad49"",
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""19aed33d-268e-4e75-8cf0-aa1fa177834e"",
+                    ""id"": ""830a703e-d554-471a-99a4-56ab4b0df5a9"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -354,7 +387,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
-                    ""id"": ""f50171e5-b797-4c64-a773-8466afbf935c"",
+                    ""id"": ""1a442b12-f4e0-4715-881d-4c46e4f775a1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -363,7 +396,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
-                    ""id"": ""7619002f-0597-42e0-88e6-64722968d6ac"",
+                    ""id"": ""17036ddf-9e29-4930-88a8-769ccc7b7879"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -372,7 +405,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Point"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""d3c93817-1fb7-49da-bd36-2582117584d5"",
+                    ""id"": ""d795fed6-9d27-495c-9091-b8df75e5a561"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -381,7 +414,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Click"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""b22ee0ce-bb23-415f-9012-52a987f200d5"",
+                    ""id"": ""070b61ce-f2c1-4460-97e6-9eef2e1f5325"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -390,7 +423,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""ScrollWheel"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""251eb76e-2ec9-4ba8-aef8-d02cfda06f66"",
+                    ""id"": ""6b005c21-768b-4259-8fb4-6ac1307de2fe"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -399,7 +432,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""MiddleClick"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""81d08c87-d113-4331-b5d1-98e64d4329bb"",
+                    ""id"": ""020ceb9c-c3b9-4718-8787-171979d4e24d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -408,7 +441,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""RightClick"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""767af8af-1ddc-41b2-9427-fbe81b04232a"",
+                    ""id"": ""0e2d0370-8622-4f9f-9204-fd89a6e7f2d2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -417,7 +450,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""TrackedDevicePosition"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""6e844d97-803f-404a-bcc6-315782ceadfd"",
+                    ""id"": ""1045cf56-a6ce-4d01-9859-5be9a4e906f2"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -426,7 +459,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""TrackedDeviceOrientation"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""31a77e16-dc1a-456a-b2ea-5205d8f802d3"",
+                    ""id"": ""7bbee740-72ff-477f-a817-d8e5cb9be7f7"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
                     ""interactions"": """",
