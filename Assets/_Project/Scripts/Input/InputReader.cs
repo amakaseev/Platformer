@@ -12,6 +12,7 @@ namespace Platformer {
     public event UnityAction<Vector2, bool> Look = delegate { };
     public event UnityAction EnableMouseControlCamera = delegate { };
     public event UnityAction DisableMouseControlCamera = delegate { };
+    public event UnityAction<bool> Jump = delegate { };
 
     PlayerInputActions inputActions;
 
@@ -44,17 +45,24 @@ namespace Platformer {
     }
 
     public void OnJump(InputAction.CallbackContext context) {
-      // noop
+      switch (context.phase) {
+        case InputActionPhase.Started:
+          Jump.Invoke(true);
+          break;
+        case InputActionPhase.Canceled:
+          Jump.Invoke(false);
+          break;
+      }
     }
 
     public void OnMouseControlCamera(InputAction.CallbackContext context) {
       switch (context.phase) {
         case InputActionPhase.Started:
           EnableMouseControlCamera.Invoke();
-        break;
+          break;
         case InputActionPhase.Canceled:
           DisableMouseControlCamera.Invoke();
-        break;
+          break;
       }
     }
 
