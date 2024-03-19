@@ -28,7 +28,6 @@ namespace Utilites {
 
     public void Stop() {
       if (IsRunning) {
-        //Time = 0f;
         IsRunning = false;
         OnTimerStop.Invoke();
       }
