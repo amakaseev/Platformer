@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 7ac0e415d3afa804d9822c9328072dbf, type: 2}
   freeLookVCamera: {fileID: 505824657}
-  speedMultiplayer: 10
+  speedMultiplayer: 50
 --- !u!1 &329083940
 GameObject:
   m_ObjectHideFlags: 3
