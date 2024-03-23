@@ -24,7 +24,6 @@ namespace Platformer {
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float jumpDuration = 0.5f;
     [SerializeField] float jumpCooldown = 0f;
-    [SerializeField] float jumpMaxHeight = 2f;
     [SerializeField] float gravityMultiplayer = 3f;
     
     Transform mainCam;
@@ -41,6 +40,7 @@ namespace Platformer {
     CountdownTimer jumpTimer;
     CountdownTimer jumpCooldownTimer;
 
+    StateMachine stateMachine;
 
     // Animator params
     static readonly int Speed = Animator.StringToHash("Speed");
@@ -58,8 +58,26 @@ namespace Platformer {
       jumpCooldownTimer = new CountdownTimer(jumpCooldown);
       timers = new List<Timer>(2) { jumpTimer, jumpCooldownTimer };
 
+      jumpTimer.OnTimerStart += () => jumpVelocity = jumpForce;
       jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
+
+      // State Machine
+      stateMachine = new StateMachine();
+
+      // Declare states
+      var locomotionState = new LocomotionState(this, animator);
+      var jumpState = new JumpState(this, animator);
+
+      // Define transitions
+      At(locomotionState, jumpState, new FuncPredicate(() => jumpTimer.IsRunning));
+      At(jumpState, locomotionState, new FuncPredicate(() => !jumpTimer.IsRunning && groundChecker.IsGrounded));
+
+      // Set initial state
+      stateMachine.SetState(locomotionState);
     }
+
+    void At(IState from, IState to, IPredicate condition) => stateMachine.AddTransition(from, to, condition);
+    void Any(IState to, IPredicate condition) => stateMachine.AddAnyTransition(to, condition);
 
     private void Start() {
       input.EnablePlayerActions();
@@ -86,11 +104,12 @@ namespace Platformer {
 
       HandleTimers();
       UpdateAnimator();
+
+      stateMachine.Update();
     }
 
     private void FixedUpdate() {
-      HandleJump();
-      HandleMovement();
+      stateMachine.FixedUpdate();
     }
 
     private void UpdateAnimator() {
@@ -103,25 +122,14 @@ namespace Platformer {
       }
     }
 
-    void HandleJump() {
+    public void HandleJump() {
       // If not jumping and grounded, keep jump velocity at 0
       if (!jumpTimer.IsRunning && groundChecker.IsGrounded) {
         jumpVelocity = ZeroF;
         jumpTimer.Stop();
       }
 
-      // If jumping or falling calculate velocity
-      if (jumpTimer.IsRunning) {
-        // Progress point for initial burst of velocity
-        float launchPoint = 0.9f;
-        if (jumpTimer.Progres > launchPoint) {
-          // Calculate the velocity required to reach the jump height using physic euqtions v = sqrt(2gh)
-          jumpVelocity = Mathf.Sqrt(2f * jumpMaxHeight * Math.Abs(Physics.gravity.y));
-        } else {
-          // Gradually apply less velocity as the jump in progresses
-          jumpVelocity += (1f - jumpTimer.Progres) * jumpForce * Time.fixedDeltaTime;
-        }
-      } else {
+      if (!jumpTimer.IsRunning) {
         // Gravity takes over
         jumpVelocity += Physics.gravity.y * gravityMultiplayer * Time.fixedDeltaTime;
       }
@@ -130,7 +138,7 @@ namespace Platformer {
       rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
     }
 
-    private void HandleMovement() {
+    public void HandleMovement() {
       // Rotate movement direction to match camera rotation
       var adjustedDirection = Quaternion.AngleAxis(mainCam.eulerAngles.y, Vector3.up) * movement;
       if (adjustedDirection.magnitude > ZeroF) {

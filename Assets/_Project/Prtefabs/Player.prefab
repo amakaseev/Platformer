@@ -2249,12 +2249,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  groundChecker: {fileID: 0}
   animator: {fileID: 3909998012340916676}
   freeLookVCam: {fileID: 0}
   input: {fileID: 11400000, guid: 7ac0e415d3afa804d9822c9328072dbf, type: 2}
   moveSpeed: 6
   rotationSpeed: 15
   smoothTime: 0.2
+  jumpForce: 10
+  jumpDuration: 0.05
+  jumpCooldown: 0
+  gravityMultiplayer: 3
 --- !u!1 &7871319249682742026
 GameObject:
   m_ObjectHideFlags: 0
