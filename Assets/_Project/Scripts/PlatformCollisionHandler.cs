@@ -7,11 +7,10 @@ namespace Platformer {
     void OnCollisionEnter(Collision other) {
       if (other.gameObject.CompareTag("MovingPlatform")) {
         ContactPoint contact = other.GetContact(0);
-        if (contact.normal.y < 0.5f)
+        if (contact.normal.y < 0.9f)
           return;
 
-        platform = other.transform;
-        transform.SetParent(platform);
+        Sticks(other.transform);
       }
     }
 
@@ -20,6 +19,11 @@ namespace Platformer {
         transform.SetParent(null);
         platform = null;
       }
+    }
+
+    void Sticks(Transform platform) {
+      this.platform = platform;
+      transform.SetParent(platform);
     }
   }
 }
