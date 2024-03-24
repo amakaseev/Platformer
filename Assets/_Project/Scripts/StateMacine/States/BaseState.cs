@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Platformer {
   public abstract class BaseState : IState {
@@ -18,11 +17,11 @@ namespace Platformer {
     }
 
     public virtual void OnEnter() {
-      Debug.Log($"{this.GetType().ToString().Replace("Platformer.", "")}.OnEnter");
+      DebugUtils.LogFSM(this, ".OnEnter");
     }
 
     public virtual void OnExit() {
-      Debug.Log($"{this.GetType().ToString().Replace("Platformer.", "")}.OnExit");
+      DebugUtils.LogFSM(this, ".OnExit");
     }
 
     public virtual void OnFixedUpdate() {

@@ -6,7 +6,7 @@ namespace Platformer {
     }
 
     public override void OnEnter() {
-      Debug.Log("JumpState.OnEnter");
+      DebugUtils.LogFSM(this, ".OnEnter");
       animator.CrossFade(JumpHash, crossFadeDuration);
     }
 
