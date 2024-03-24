@@ -18,10 +18,11 @@ namespace Platformer {
     }
 
     public virtual void OnEnter() {
+      Debug.Log($"{this.GetType().ToString().Replace("Platformer.", "")}.OnEnter");
     }
 
     public virtual void OnExit() {
-      Debug.Log("BaseState.OnEnter");
+      Debug.Log($"{this.GetType().ToString().Replace("Platformer.", "")}.OnExit");
     }
 
     public virtual void OnFixedUpdate() {

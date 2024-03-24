@@ -71,7 +71,6 @@ namespace Platformer {
       dashCooldownTimer = new CountdownTimer(dashCooldown);
       dashTimer.OnTimerStart += () => dashVelocity = dashForce;
       dashTimer.OnTimerStop += () => {
-        Debug.Log("!!dashTimer.OnTimerStop!!");
         dashVelocity = 1;
         dashCooldownTimer.Start();
       };
