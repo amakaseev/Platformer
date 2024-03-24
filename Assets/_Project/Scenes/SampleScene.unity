@@ -946,7 +946,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 1
     m_LegacyHeadingDefinition: -1
@@ -974,7 +974,7 @@ MonoBehaviour:
     m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 1
     m_LegacyHeadingDefinition: -1
@@ -2263,6 +2263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSpeed
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891886147035067652, guid: c224e07d539315043a05e30e8f194fd4,
+        type: 3}
+      propertyPath: smoothTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3891886147035067652, guid: c224e07d539315043a05e30e8f194fd4,
         type: 3}
