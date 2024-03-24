@@ -25,7 +25,12 @@ namespace Platformer {
     [SerializeField] float jumpDuration = 0.5f;
     [SerializeField] float jumpCooldown = 0f;
     [SerializeField] float gravityMultiplayer = 3f;
-    
+
+    [Header("Dash Settings")]
+    [SerializeField] float dashForce = 5f;
+    [SerializeField] float dashDuration = 0.2f;
+    [SerializeField] float dashCooldown = 2f;
+
     Transform mainCam;
 
     const float ZeroF = 0f;
@@ -33,12 +38,15 @@ namespace Platformer {
     float currentSpeed;
     float velocity;
     float jumpVelocity;
+    float dashVelocity = 1;
 
     Vector3 movement;
 
     List<Timer> timers;
     CountdownTimer jumpTimer;
     CountdownTimer jumpCooldownTimer;
+    CountdownTimer dashTimer;
+    CountdownTimer dashCooldownTimer;
 
     StateMachine stateMachine;
 
@@ -56,10 +64,19 @@ namespace Platformer {
       // Setup timers
       jumpTimer = new CountdownTimer(jumpDuration);
       jumpCooldownTimer = new CountdownTimer(jumpCooldown);
-      timers = new List<Timer>(2) { jumpTimer, jumpCooldownTimer };
-
       jumpTimer.OnTimerStart += () => jumpVelocity = jumpForce;
       jumpTimer.OnTimerStop += () => jumpCooldownTimer.Start();
+
+      dashTimer = new CountdownTimer(dashDuration);
+      dashCooldownTimer = new CountdownTimer(dashCooldown);
+      dashTimer.OnTimerStart += () => dashVelocity = dashForce;
+      dashTimer.OnTimerStop += () => {
+        Debug.Log("!!dashTimer.OnTimerStop!!");
+        dashVelocity = 1;
+        dashCooldownTimer.Start();
+      };
+
+      timers = new List<Timer>(4) { jumpTimer, jumpCooldownTimer, dashTimer, dashCooldownTimer };
 
       // State Machine
       stateMachine = new StateMachine();
@@ -67,10 +84,12 @@ namespace Platformer {
       // Declare states
       var locomotionState = new LocomotionState(this, animator);
       var jumpState = new JumpState(this, animator);
+      var dashState = new DashState(this, animator);
 
       // Define transitions
       At(locomotionState, jumpState, new FuncPredicate(() => jumpTimer.IsRunning));
-      At(jumpState, locomotionState, new FuncPredicate(() => !jumpTimer.IsRunning && groundChecker.IsGrounded));
+      At(locomotionState, dashState, new FuncPredicate(() => dashTimer.IsRunning));
+      Any(locomotionState, new FuncPredicate(() => groundChecker.IsGrounded && !jumpTimer.IsRunning && !dashTimer.IsRunning));
 
       // Set initial state
       stateMachine.SetState(locomotionState);
@@ -85,10 +104,12 @@ namespace Platformer {
 
     private void OnEnable() {
       input.Jump += OnJump;
+      input.Dash += OnDash;
     }
 
     private void OnDisable() {
       input.Jump -= OnJump;
+      input.Jump -= OnDash;
     }
 
     void OnJump(bool performed) {
@@ -96,6 +117,14 @@ namespace Platformer {
         jumpTimer.Start();
       } else if (!performed && jumpTimer.IsRunning) {
         jumpTimer.Stop();
+      }
+    }
+
+    void OnDash(bool performed) {
+      if (performed && !dashTimer.IsRunning && !dashCooldownTimer.IsRunning) {
+        dashTimer.Start();
+      } else if (!performed && dashTimer.IsRunning) {
+        dashTimer.Stop();
       }
     }
 
@@ -155,7 +184,7 @@ namespace Platformer {
 
     private void HandleHorizontalMovement(Vector3 adjustedDirection) {
       // Move the player
-      Vector3 velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
+      Vector3 velocity = adjustedDirection * moveSpeed * dashVelocity * Time.fixedDeltaTime;
       rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
     }
 
