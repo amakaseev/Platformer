@@ -55,9 +55,9 @@ namespace Platformer {
 
     private void Awake() {
       mainCam = Camera.main.transform;
-      freeLookVCam.Follow = transform;
-      freeLookVCam.LookAt = transform;
-      freeLookVCam.OnTargetObjectWarped(transform, transform.position - freeLookVCam.transform.position - Vector3.forward);
+      //freeLookVCam.Follow = transform;
+      //freeLookVCam.LookAt = transform;
+      //freeLookVCam.OnTargetObjectWarped(transform, transform.position - freeLookVCam.transform.position - Vector3.forward);
 
       rb.freezeRotation = true;
 
