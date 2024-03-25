@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 public static class Setup {
-
+#if UNITY_EDITOR
   static class Folders {
     public static void CreateDefault(string root, params string[] folders) {
       var fullPath = Path.Combine(Application.dataPath, root);
@@ -21,5 +21,5 @@ public static class Setup {
     Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prtefabs", "ScriptableObjects", "Scripts", "Settings");
     UnityEditor.AssetDatabase.Refresh();
   }
-
+#endif
 }
