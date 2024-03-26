@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.17845559, g: 0.22344781, b: 0.30544445, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
+    agentRadius: 0.25
+    agentHeight: 1
+    agentSlope: 41.4
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.083333336
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 44f065f3120d21d46bf097d54b397692, type: 2}
 --- !u!1 &280683227
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +155,6 @@ Transform:
   m_Children:
   - {fileID: 330585546}
   - {fileID: 505824658}
-  - {fileID: 410087041}
   - {fileID: 919132036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -388,8 +387,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.017735932, y: -0.00000003440735, z: -6.103424e-10, w: 0.99984276}
-  m_LocalPosition: {x: 5.0040205e-10, y: 1.667742, z: -4.3145413}
+  m_LocalRotation: {x: -0.017735932, y: 0.00000003440735, z: 6.103424e-10, w: 0.99984276}
+  m_LocalPosition: {x: -5.00402e-10, y: 1.667742, z: -4.3145413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -561,13 +560,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.45913255, y: -0.22771111, z: 0.12302415, w: 0.84982944}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 280683228}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 56.762, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653436469}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.017735934, y: -0.000000017203673, z: -3.0517122e-10, w: 0.99984276}
+  m_LocalRotation: {x: -0.017735932, y: 0.000000017203673, z: 3.0517117e-10, w: 0.99984276}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1016,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069261058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0004055877, y: -2.8732478e-10, z: 1.165354e-13, w: 0.99999994}
+  m_LocalRotation: {x: 0.00040558737, y: -0.0000000011411838, z: 4.6284976e-13, w: 0.99999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1222,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427799727}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.01859501, y: 3.8394415e-20, z: 6.594747e-19, w: 0.9998271}
+  m_LocalRotation: {x: 0.01859501, y: -1.10945514e-16, z: 4.7883964e-18, w: 0.9998271}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1533,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8751695795471315033, guid: c224e07d539315043a05e30e8f194fd4,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.41
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1573,6 +1577,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 430664695}
+  - {fileID: 410087041}
   - {fileID: 280683228}
   - {fileID: 5226762721462917110}
   - {fileID: 3817709313099105446}
