@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 
 namespace Platformer {
-  public class LocomotionState : BaseState {
-    public LocomotionState(PlayerController player, Animator animator) : base(player, animator) {
+  public class JumpState : PlayerBaseState {
+    public JumpState(PlayerController player, Animator animator) : base(player, animator) {
     }
 
     public override void OnEnter() {
       DebugUtils.LogFSM(this, ".OnEnter");
-      animator.CrossFade(LocomotionHash, crossFadeDuration);
+      animator.CrossFade(JumpHash, crossFadeDuration);
     }
 
     public override void OnFixedUpdate() {
+      player.HandleJump();
       player.HandleMovement();
     }
   }
