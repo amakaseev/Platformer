@@ -1,6 +1,7 @@
 ﻿using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.AI;
+using Utilites;
 
 namespace Platformer {
 
@@ -13,19 +14,27 @@ namespace Platformer {
     [SerializeField, Child] Animator animator;
 
     [SerializeField] float wandedRadius = 10f;
+    [SerializeField] float timeBetweenAttack = 1f;
+
+
     StateMachine stateMachine;
+
+    CountdownTimer attackTimer;
 
     private void OnValidate() => this.ValidateRefs();
 
     private void Start() {
+      attackTimer = new CountdownTimer(timeBetweenAttack);
       stateMachine = new StateMachine();
 
       var wanderState = new EnemyWanderState(this, animator, agent, wandedRadius);
       var chaceState = new EnemyChaceState(this, animator, agent, playerDetector.Player);
+      var attackState = new EnemyAttackState(this, animator, agent, playerDetector.Player);
 
       At(wanderState, chaceState, new FuncPredicate(() => playerDetector.CanDetectPlayer()));
       At(chaceState, wanderState, new FuncPredicate(() => !playerDetector.CanDetectPlayer()));
-      //Any(wanderState, new FuncPredicate(() => true)); // always trrue
+      At(chaceState, attackState, new FuncPredicate(() => playerDetector.CanAttackPlayer()));
+      At(attackState, chaceState, new FuncPredicate(() => !playerDetector.CanAttackPlayer()));
 
       stateMachine.SetState(wanderState);
     }
@@ -35,10 +44,18 @@ namespace Platformer {
 
     private void Update() {
       stateMachine.Update();
+      attackTimer.Tick(Time.deltaTime);
     }
 
     private void FixedUpdate() {
       stateMachine.FixedUpdate();
+    }
+
+    public void Attack() {
+      if (attackTimer.IsRunning) return;
+
+      attackTimer.Start();
+      DebugUtils.Log("Attacking!", Color.red);
     }
   }
 }

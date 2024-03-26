@@ -1,4 +1,5 @@
 ﻿
+using System.Net.WebSockets;
 using UnityEngine;
 using Utilites;
 
@@ -9,6 +10,7 @@ namespace Platformer {
     [SerializeField] float detectionRadius = 10;
     [SerializeField] float innerDetectionRadius = 5;
     [SerializeField] float detectionCooldown = 1f;
+    [SerializeField] float attackRange = 2;
 
     public Transform Player {  get; private set; }
     CountdownTimer detectionTimer;
@@ -25,6 +27,11 @@ namespace Platformer {
 
     public bool CanDetectPlayer() {
       return detectionTimer.IsRunning || detectionStarategy.Exclude(Player, transform, detectionTimer);
+    }
+
+    public bool CanAttackPlayer() {
+      var directionToPlayer = Player.position - transform.position;
+      return directionToPlayer.magnitude <= attackRange;
     }
 
     public void SetDetectionStrategy(IDetectionStarategy detectionStarategy) => this.detectionStarategy = detectionStarategy;
