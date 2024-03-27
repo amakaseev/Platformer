@@ -2269,6 +2269,9 @@ MonoBehaviour:
   dashForce: 5
   dashDuration: 0.2
   dashCooldown: 0.5
+  attackCooldown: 0.5
+  attackDistance: 1
+  attackDamage: 10
 --- !u!114 &4485562644143967604
 MonoBehaviour:
   m_ObjectHideFlags: 0
