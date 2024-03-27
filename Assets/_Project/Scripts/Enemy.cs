@@ -55,7 +55,7 @@ namespace Platformer {
       if (attackTimer.IsRunning) return;
 
       attackTimer.Start();
-      DebugUtils.Log("Attacking!", Color.red);
+      playerDetector.PlayerHealth.TakeDamage(10);
     }
   }
 }

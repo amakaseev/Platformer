@@ -13,13 +13,20 @@ namespace Platformer {
     [SerializeField] float attackRange = 2;
 
     public Transform Player {  get; private set; }
+    public Health PlayerHealth { get; private set; }
+
     CountdownTimer detectionTimer;
 
     IDetectionStarategy detectionStarategy;
 
+    private void Awake() {
+      Player = GameObject.FindGameObjectWithTag("Player").transform;
+      PlayerHealth = Player.GetComponent<Health>();
+    }
+
+
     void Start() {
       detectionTimer = new CountdownTimer(detectionCooldown);
-      Player = GameObject.FindGameObjectWithTag("Player").transform;
       detectionStarategy = new ConeDetectionStarategy(detectionAngle, detectionRadius, innerDetectionRadius);
     }
 

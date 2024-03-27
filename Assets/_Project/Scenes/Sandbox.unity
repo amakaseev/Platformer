@@ -387,8 +387,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.017735932, y: 0.000000034407353, z: 6.1034244e-10, w: 0.99984276}
-  m_LocalPosition: {x: -5.0040216e-10, y: 1.667742, z: -4.3145413}
+  m_LocalRotation: {x: -0.017735932, y: -0.000000030321686, z: -5.378679e-10, w: 0.99984276}
+  m_LocalPosition: {x: 1.6326449e-10, y: 1.667742, z: -4.3145413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,7 +892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653436469}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.017735932, y: 0.000000017203678, z: 3.0517128e-10, w: 0.99984276}
+  m_LocalRotation: {x: -0.017735936, y: -0.000000005612981, z: -9.9567236e-11, w: 0.99984276}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069261058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00040558696, y: -0.0000000013288959, z: 5.389829e-13, w: 0.99999994}
+  m_LocalRotation: {x: 0.00040558228, y: 4.3647115e-23, z: -1.6333299e-23, w: 0.99999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1221,8 +1221,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427799727}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.01859501, y: -3.8394415e-20, z: -6.594747e-19, w: 0.9998271}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.17082562, y: -0.0000000123249775, z: 0.0000000021368305,
+    w: 0.9853013}
+  m_LocalPosition: {x: 0, y: 1.4544729, z: -0.21608877}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1565,21 +1566,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658756227273839426, guid: 90e25a99d3728674a84511edcc03f0d9,
-        type: 3}
-      propertyPath: detectionAngle
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658756227273839426, guid: 90e25a99d3728674a84511edcc03f0d9,
-        type: 3}
-      propertyPath: detectionRadius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658756227273839426, guid: 90e25a99d3728674a84511edcc03f0d9,
-        type: 3}
-      propertyPath: innerDetectionRadius
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
